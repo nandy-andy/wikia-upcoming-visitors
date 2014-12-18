@@ -40,6 +40,16 @@
           request.execute(function(resp) {
             var results = document.getElementById('results');
             
+            if( results.items ) {
+              results.items.forEach(function(event) {
+                var p = document.createElement('p'),
+                    sorted;
+                
+                p.appendChild(document.createTextNode(event.description));
+                results.appendChild(p);
+              });
+            }
+            
             results.appendChild(document.createTextNode(JSON.stringify(resp)));
           });
         });
