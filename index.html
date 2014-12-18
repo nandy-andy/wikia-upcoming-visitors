@@ -17,11 +17,9 @@
           'scope': 'https://www.googleapis.com/auth/calendar.readonly'
         };
         gapi.auth.authorize(config, function(authResult) {
-          var authorizeButton = document.getElementById('authorize-button'),
-              results = document.getElementById('results');
+          var results = document.getElementById('results');
               
           if (authResult && !authResult.error) {
-            authorizeButton.style.visibility = 'hidden';
             getCalendarEvents();
           } else {
             results.appendChild(document.createTextNode('Authentication error occured.'));
