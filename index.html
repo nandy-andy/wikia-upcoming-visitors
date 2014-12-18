@@ -11,15 +11,15 @@
     
     <script src="https://apis.google.com/js/client.js"></script>
     <script>
+      var authorizeButton = document.getElementById('authorize-button'),
+          results = document.getElementById('results');
+    
       function auth() {
         var config = {
           'client_id': '671827949894-b6eoa7u39g5cpecn0n42h2vqgh8sv0au.apps.googleusercontent.com',
           'scope': 'https://www.googleapis.com/auth/calendar.readonly'
         };
         gapi.auth.authorize(config, function(authResult) {
-          var authorizeButton = document.getElementById('authorize-button'),
-              results = document.getElementById('results');
-              
           if (authResult && !authResult.error) {
             authorizeButton.style.visibility = 'hidden';
             getCalendarEvents();
@@ -36,7 +36,7 @@
           });
           
           request.execute(function(resp) {
-            console.log(resp);
+            results.appendChild(document.createTextNode(JSON.stringify(resp)));
           });
         });
       
