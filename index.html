@@ -44,7 +44,7 @@
                     sorted,
                     matches;
                 
-                matches = event.summary.matches("(.{1,}) in (.{1,})");
+                matches = event.summary.match("(.{1,}) in (.{1,})");
                 if( matches ) {
                   console.log(event);
                   p.appendChild(document.createTextNode(event.summary));
