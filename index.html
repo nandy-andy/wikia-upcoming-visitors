@@ -30,7 +30,7 @@
       function getCalendarEvents() {
         gapi.client.load('calendar', 'v3', function() {
           var today = new Date(),
-              future = new Date().setDate(today.getDate() + 30),
+              future = new Date(today.getTime() + 30*24*60*60*1000),
               request = gapi.client.calendar.events.list({
                 'calendarId': 'wikia-inc.com_4ch01et6e58vbfr2on5575alu8@group.calendar.google.com',
                 'timeMin': today.toISOString(),
