@@ -38,8 +38,8 @@
           });
           
           request.execute(function(resp) {
-            var authorizeButton = document.getElementById('authorize-button'),
-              results = document.getElementById('results');
+            var results = document.getElementById('results');
+            
             results.appendChild(document.createTextNode(JSON.stringify(resp)));
           });
         });
