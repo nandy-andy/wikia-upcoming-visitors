@@ -47,7 +47,7 @@
                 matches = event.summary.match("(.{1,}) in (.{1,})");
                 if( matches ) {
                   console.log(event);
-                  p.appendChild(document.createTextNode(event.summary) + " (" + event.start.date + " - " + event.end.date + ")"));
+                  p.appendChild(document.createTextNode(event.summary + " (" + event.start.date + " - " + event.end.date + ")"));
                   results.appendChild(p);
                 }
               });
