@@ -41,10 +41,15 @@
             if( resp.items ) {
               resp.items.forEach(function(event) {
                 var p = document.createElement('p'),
-                    sorted;
+                    sorted,
+                    matches;
                 
-                p.appendChild(document.createTextNode(event.summary));
-                results.appendChild(p);
+                matches = event.summary.matches("(.{1,}) in (.{1,})");
+                if( matches ) {
+                  console.log(event);
+                  p.appendChild(document.createTextNode(event.summary));
+                  results.appendChild(p);
+                }
               });
             }
             
