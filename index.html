@@ -58,7 +58,7 @@
     </script>
   </head>
 
-  <body>
+  <body onload="auth();">
 
     <!-- HEADER -->
     <div id="header_wrap" class="outer">
@@ -78,7 +78,6 @@
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
-        <button id="authorize-button" onclick="auth();">Authorize</button>
         <div id="results"></div>
       </section>
     </div>
