@@ -38,8 +38,8 @@
           request.execute(function(resp) {
             var results = document.getElementById('results');
             
-            if( results.items ) {
-              results.items.forEach(function(event) {
+            if( resp.items ) {
+              resp.items.forEach(function(event) {
                 var p = document.createElement('p'),
                     sorted;
                 
