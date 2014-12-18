@@ -29,11 +29,13 @@
       
       function getCalendarEvents() {
         gapi.client.load('calendar', 'v3', function() {
-          var request = gapi.client.calendar.events.list({
-            'calendarId': 'wikia-inc.com_4ch01et6e58vbfr2on5575alu8@group.calendar.google.com',
-            'timeMin': '2014-12-01T00:00:00.000Z',
-            'timeMax': '2014-12-31T23:59:59.000Z'
-          });
+          var today = new Date(),
+              future = new Date().setDate(today.getDate() + 30),
+              request = gapi.client.calendar.events.list({
+                'calendarId': 'wikia-inc.com_4ch01et6e58vbfr2on5575alu8@group.calendar.google.com',
+                'timeMin': today.toISOString(),
+                'timeMax': future.toISOString()
+              });
           
           request.execute(function(resp) {
             var results = document.getElementById('results');
@@ -41,16 +43,23 @@
             if( resp.items ) {
               resp.items.forEach(function(event) {
                 var p = document.createElement('p'),
-                    sorted,
+                    filtered,
                     matches;
                 
                 matches = event.summary.match("(.{1,}) in (.{1,})");
                 if( matches ) {
-                  console.log(event);
                   p.appendChild(document.createTextNode(event.summary + " (" + event.start.date + " - " + event.end.date + ")"));
                   results.appendChild(p);
+                  filtered[] = event;
                 }
               });
+              
+              if( filtered.length = 0 ) {
+                p.appendChild("It seems no one is traveling in next 30 days.");
+                results.appendChild(p);
+              }
+            } else {
+              p.appendChild("No events found.");
             }
           });
         });
