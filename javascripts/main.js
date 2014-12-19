@@ -89,7 +89,7 @@
 				' in ';
 
 			if( Math.abs(diffHours) <= 24 ) {
-				text += Math.abs(diffHours) + ' hours for ';
+				text += ' about ' + Math.abs(diffHours) + ' hours for ';
 			} else {
 				text += Math.abs(diffDays) + ' days for ';
 			}
