@@ -51,7 +51,10 @@
 		displayResults();
 	}
 
-	function displayResults() {
+	function displayResults(inputEvents) {
+		clearResultsDiv();
+		var events = inputEvents || events;
+
 		if( events.length === 0 ) {
 			showError('It seems no one is traveling in next 30 days.');
 		} else {
@@ -101,8 +104,13 @@
 	}
 
 	function filterEvents(filterType, filterValue) {
-		console.log(filterType, filterValue);
-		//clearResultsDiv();
+		console.log(events);
+
+		var newEvents = events.filter(function (event) {
+			return event[filterType] = filterValue;
+		});
+
+		displayResults(newEvents);
 	}
 
 	function prepareFilteringOptions() {
@@ -116,7 +124,7 @@
 			});
 
 			filters.push({
-				name: 'Places',
+				name: 'where',
 				options: Object.keys(places)
 			});
 		}
