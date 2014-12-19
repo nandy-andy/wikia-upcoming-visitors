@@ -39,7 +39,7 @@
 					summary: event.summary,
 					start: event.start.date,
 					end: event.end.date,
-					diff: today.diff(moment(event.start.date))
+					diff: today.diff(moment(event.start.date), 'days')
 				};
 
 				console.log(newEvent);
