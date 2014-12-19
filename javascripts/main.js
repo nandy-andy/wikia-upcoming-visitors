@@ -13,8 +13,7 @@
 			var request = gapi.client.calendar.events.list({
 				'calendarId': calendarId,
 				'timeMin': today.toISOString(),
-				'timeMax': future.toISOString(),
-				'orderBy': 'startTime'
+				'timeMax': future.toISOString()
 			});
 
 			request.execute(function(resp) {
@@ -44,6 +43,7 @@
 			}
 		});
 
+		sortEvents();
 		prepareFilteringOptions();
 
 		hideLoader();
@@ -60,6 +60,20 @@
 
 				p.appendChild(document.createTextNode(text));
 				resultsDiv.appendChild(p);
+			});
+		}
+	}
+
+	function sortEvents() {
+		if( events.length > 0 ) {
+			events.sort(function(a, b) {
+				if( a.start > b.start ) {
+					return 1;
+				} else if( a.start < b. start) {
+					return -1;
+				}
+
+				return 0;
 			});
 		}
 	}
