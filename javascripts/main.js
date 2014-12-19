@@ -6,6 +6,7 @@
 		today = new Date(),
 		days = 30,
 		future = new Date(today.getTime() + days*24*60*60*1000),
+		filtersDiv = document.getElementById('filters'),
 		resultsDiv = document.getElementById('results');
 
 	function getCalendarEvents() {
@@ -47,12 +48,12 @@
 		prepareFilteringOptions();
 
 		hideLoader();
+		displayFilteringOptions();
 		displayResults();
 	}
 
 	function displayResults(inputEvents) {
 		clearResultsDiv();
-		displayFilteringOptions();
 
 		var eventsList = inputEvents || events;
 
@@ -89,7 +90,7 @@
 					});
 
 					button.appendChild(document.createTextNode(option));
-					resultsDiv.appendChild(button);
+					filtersDiv.appendChild(button);
 				});
 			});
 		}
