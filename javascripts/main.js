@@ -67,8 +67,7 @@
 						event.who,
 						event.where,
 						event.start,
-						event.end,
-						event.diff
+						event.end
 					);
 
 				p.appendChild(document.createTextNode(text));
@@ -77,24 +76,24 @@
 		}
 	}
 
-	function prepareText(who, where, start, end, diff) {
+	function prepareText(who, where, start, end) {
 		var momentStart = moment(start),
 			diffHours = today.diff(momentStart, 'hours'),
 			diffDays = today.diff(momentStart, 'days');
 
 		if( diffHours < 0 ) {
-			return event.who +
+			return who +
 				' will be in ' +
-				event.where +
+				where +
 				' in ' +
 				diffDays +
 				' for ' +
 				momentStart.diff(moment(end, 'days')) +
 				' days';
 		} else {
-			return event.who +
+			return who +
 			' is in ' +
-			event.where +
+			where +
 			' for ' +
 			today.diff(moment(end, 'days')) +
 			' days';
