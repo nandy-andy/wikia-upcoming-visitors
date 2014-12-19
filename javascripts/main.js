@@ -40,19 +40,23 @@
 		console.log(filteredEvents);
 
 		results.forEach(function(event) {
-			var matches = event.summary.match('(.{1,}) in (.{1,})');
+			var matches = event.summary.match('(.{1,}) in (.{1,})'),
+				newEventObj;
 
 			if( matches ) {
 				console.log('match!');
-
-				filteredEvents.push({
+				newEventObj = {
 					who: matches[1],
 					where: matches[2],
 					summary: event.summary,
 					start: event.start.date,
 					end: event.end.date
-				});
+				};
 
+				filteredEvents.push(newEventObj);
+
+				console.log('== newEventObj ==');
+				console.log(newEventObj);
 				console.log('== filteredEvents ==');
 				console.log(filteredEvents);
 			}
@@ -75,6 +79,8 @@
 			var p = document.createElement('p');
 
 			filteredEvents.forEach(function(event) {
+				console.log(event);
+
 				p.appendChild(document.createTextNode(event.who + ' is in ' + event.where + '(' + event.start + ' - ' + event.end + ')'));
 				resultsDiv.appendChild(p);
 			});
