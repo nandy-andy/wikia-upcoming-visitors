@@ -1,5 +1,5 @@
 (function(){
-	var filteredEvents = [],
+	var events = [],
 		calendarId = 'wikia-inc.com_4ch01et6e58vbfr2on5575alu8@group.calendar.google.com',
 
 		today = new Date(),
@@ -32,7 +32,7 @@
 				newEventObj;
 
 			if( matches ) {
-				filteredEvents.push({
+				events.push({
 					who: matches[1],
 					where: matches[2],
 					summary: event.summary,
@@ -47,12 +47,12 @@
 	}
 
 	function displayResults() {
-		if( filteredEvents.length === 0 ) {
+		if( events.length === 0 ) {
 			showError('It seems no one is traveling in next 30 days.');
 		} else {
-			filteredEvents.forEach(function(event) {
+			events.forEach(function(event) {
 				var p = document.createElement('p'),
-					text = event.who + ' is in ' + event.where + '(' + event.start + ' - ' + event.end + ')';
+					text = event.who + ' is in ' + event.where + ' (' + event.start + ' - ' + event.end + ')';
 
 				p.appendChild(document.createTextNode(text));
 				resultsDiv.appendChild(p);
