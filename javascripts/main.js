@@ -128,6 +128,9 @@
 				options: Object.keys(places)
 			});
 		}
+
+		console.log(events);
+		console.log(filters);
 	}
 
 	function hideLoader() {
