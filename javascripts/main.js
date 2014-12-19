@@ -88,7 +88,7 @@
 				where +
 				' in ';
 
-			if( diffHours <= 24 ) {
+			if( Math.abs(diffHours) <= 24 ) {
 				text += Math.abs(diffHours) + ' hours for ';
 			} else {
 				text += Math.abs(diffDays) + ' days for ';
