@@ -41,6 +41,9 @@
 					end: event.end.date
 				};
 
+				console.log(event.start.date);
+				console.log(event.end.date);
+
 				events.push(newEvent);
 			}
 		});
