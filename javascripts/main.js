@@ -53,12 +53,12 @@
 
 	function displayResults(inputEvents) {
 		clearResultsDiv();
-		var events = inputEvents || events;
+		var eventsList = inputEvents || events;
 
-		if( events.length === 0 ) {
+		if( eventsList.length === 0 ) {
 			showError('It seems no one is traveling in next 30 days.');
 		} else {
-			events.forEach(function(event) {
+			eventsList.forEach(function(event) {
 				var p = document.createElement('p'),
 					text = event.who + ' is in ' + event.where + ' (' + event.start + ' - ' + event.end + ')';
 
