@@ -3,9 +3,8 @@
 		filters = [],
 		calendarId = 'wikia-inc.com_4ch01et6e58vbfr2on5575alu8@group.calendar.google.com',
 
-		today = new Date(),
-		days = 30,
-		future = new Date(today.getTime() + days*24*60*60*1000),
+		today = moment(),
+		future = today.add(30, 'days'),
 		filtersDiv = document.getElementById('filters'),
 		resultsDiv = document.getElementById('results');
 
