@@ -1,5 +1,6 @@
 (function(){
 	var events = [],
+		filters = [],
 		calendarId = 'wikia-inc.com_4ch01et6e58vbfr2on5575alu8@group.calendar.google.com',
 
 		today = new Date(),
@@ -43,6 +44,8 @@
 			}
 		});
 
+		prepareFilteringOptions();
+
 		hideLoader();
 		displayResults();
 	}
@@ -59,6 +62,25 @@
 				resultsDiv.appendChild(p);
 			});
 		}
+	}
+
+	function prepareFilteringOptions() {
+		if( events.length > 0 ) {
+			var places;
+
+			events.forEach(function(event) {
+				if( !places[event.where] ) {
+					places.push(event.where);
+				}
+			});
+
+			filters.push({
+				name: 'Place',
+				options: places
+			});
+		}
+
+		console.log(filters);
 	}
 
 	function hideLoader() {
