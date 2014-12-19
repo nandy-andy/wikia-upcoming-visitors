@@ -38,19 +38,26 @@ function filterResults(results) {
 				start: event.start.date,
 				end: event.end.date
 			});
-
-			console.log(matches);
-			console.log(event);
 		}
 	});
 
 	if( events.length = 0 ) {
 		showError('It seems no one is traveling in next 30 days.');
 	} else {
-		console.log(events);
+		displayResults();
 	}
 
 	hideLoader();
+}
+
+function displayResults() {
+	console.log(events);
+	var p = document.createElement('p');
+
+	events.forEach(function(event) {
+		p.appendChild(document.createTextNode(event.who + ' is in ' + event.where + '(' + event.start + ' - ' + event.end + ')'));
+		resultsDiv.appendChild(p);
+	});
 }
 
 function hideLoader() {
@@ -64,6 +71,8 @@ function showError(errorMsg) {
 	errorDiv.style.display = 'block';
 }
 
-if( window.STATE.authorized.success === true ) {
-	getCalendarEvents();
-}
+window.STATE.authorized.watch('success', function(id, oldval, newval) {
+	if( newval === true ) {
+		getCalendarEvents();
+	}
+});
