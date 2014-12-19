@@ -47,12 +47,13 @@
 		prepareFilteringOptions();
 
 		hideLoader();
-		displayFilteringOptions();
 		displayResults();
 	}
 
 	function displayResults(inputEvents) {
 		clearResultsDiv();
+		displayFilteringOptions();
+
 		var eventsList = inputEvents || events;
 
 		if( eventsList.length === 0 ) {
@@ -104,8 +105,6 @@
 	}
 
 	function filterEvents(filterType, filterValue) {
-		console.log(events);
-
 		var newEvents = events.filter(function (event) {
 			return event[filterType] = filterValue;
 		});
@@ -128,9 +127,6 @@
 				options: Object.keys(places)
 			});
 		}
-
-		console.log(events);
-		console.log(filters);
 	}
 
 	function hideLoader() {
