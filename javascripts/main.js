@@ -87,15 +87,15 @@
 				where +
 				' in ' +
 				diffDays +
-				' for ' +
-				momentStart.diff(moment(end, 'days')) +
+				' days for ' +
+				momentStart.diff(moment(end), 'days') +
 				' days';
 		} else {
 			return who +
 			' is in ' +
 			where +
 			' for ' +
-			today.diff(moment(end, 'days')) +
+			today.diff(moment(end), 'days') +
 			' days';
 		}
 	}
