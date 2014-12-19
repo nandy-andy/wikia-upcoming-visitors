@@ -74,18 +74,16 @@
 					button.dataset.filter = filter.name;
 					button.dataset.filterValue = option;
 
-					button.addEventListener('click', onFilterClick);
+					button.addEventListener('click', function(event) {
+						console.log('-= client =-');
+						console.log(event);
+					});
 
 					button.appendChild(document.createTextNode(option));
 					resultsDiv.appendChild(button);
 				});
 			});
 		}
-	}
-
-	function onFilterClick(event) {
-		console.log('click');
-		console.log(event);
 	}
 
 	function sortEvents() {
