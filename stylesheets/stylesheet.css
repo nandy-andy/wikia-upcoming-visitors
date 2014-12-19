@@ -368,7 +368,28 @@ Full-Width Styles
   background: #212121;
 }
 
+.loader {
+	visibility: hidden;
+}
 
+.loading .loader {
+	visibility: visible;
+}
+
+.loader {
+	width: 128px;
+	display: block;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.loader.image {
+	height: 128px;
+}
+
+#error {
+	display: none;
+}
 
 /*******************************************************************************
 Small Device Styles

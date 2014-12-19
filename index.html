@@ -10,61 +10,7 @@
     <title>Wikia-upcoming-visitors</title>
     
     <script src="https://apis.google.com/js/client.js"></script>
-    <script>
-      function auth() {
-        var config = {
-          'client_id': '671827949894-b6eoa7u39g5cpecn0n42h2vqgh8sv0au.apps.googleusercontent.com',
-          'scope': 'https://www.googleapis.com/auth/calendar.readonly'
-        };
-        gapi.auth.authorize(config, function(authResult) {
-          var results = document.getElementById('results');
-              
-          if (authResult && !authResult.error) {
-            getCalendarEvents();
-          } else {
-            results.appendChild(document.createTextNode('Authentication error occured.'));
-          }
-        });
-      }
-      
-      function getCalendarEvents() {
-        gapi.client.load('calendar', 'v3', function() {
-          var today = new Date(),
-              future = new Date(today.getTime() + 30*24*60*60*1000),
-              request = gapi.client.calendar.events.list({
-                'calendarId': 'wikia-inc.com_4ch01et6e58vbfr2on5575alu8@group.calendar.google.com',
-                'timeMin': today.toISOString(),
-                'timeMax': future.toISOString()
-              });
-          
-          request.execute(function(resp) {
-            var results = document.getElementById('results');
-            
-            if( resp.items ) {
-              resp.items.forEach(function(event) {
-                var p = document.createElement('p'),
-                    filtered,
-                    matches;
-                
-                matches = event.summary.match("(.{1,}) in (.{1,})");
-                if( matches ) {
-                  p.appendChild(document.createTextNode(event.summary + " (" + event.start.date + " - " + event.end.date + ")"));
-                  results.appendChild(p);
-                }
-              });
-              
-              if( filtered.length = 0 ) {
-                p.appendChild("It seems no one is traveling in next 30 days.");
-                results.appendChild(p);
-              }
-            } else {
-              p.appendChild("No events found.");
-            }
-          });
-        });
-      
-      }
-    </script>
+	<script src="javascripts/main.js"></script>
   </head>
 
   <body onload="auth();">
@@ -74,32 +20,29 @@
         <header class="inner">
           <a id="forkme_banner" href="https://github.com/nandy-andy/wikia-upcoming-visitors">View on GitHub</a>
 
-          <h1 id="project_title">Wikia-upcoming-visitors</h1>
-          <h2 id="project_tagline">A simple application which retrieves data from Google Calendar and returns messages about upcoming visitors</h2>
-
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/nandy-andy/wikia-upcoming-visitors/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/nandy-andy/wikia-upcoming-visitors/tarball/master">Download this project as a tar.gz file</a>
-            </section>
+          <h1 id="project_title">Upcoming visitors</h1>
+          <h2 id="project_tagline">Below you'll find a list with upcoming visitors in Wikia's offices.</h2>
         </header>
     </div>
 
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
-        <div id="results"></div>
+        <div id="results" class="loading">
+			<img src="images/globe.gif" class="loader image" height="128" width="128" />
+			<div class="loader">Loading...</div>
+        </div>
+		<div id="error"></div>
       </section>
     </div>
 
     <!-- FOOTER  -->
     <div id="footer_wrap" class="outer">
       <footer class="inner">
-        <p class="copyright">Wikia-upcoming-visitors maintained by <a href="https://github.com/nandy-andy">nandy-andy</a></p>
+        <p class="copyright">Upcoming visitors maintained by <a href="https://github.com/nandy-andy">nandy-andy</a></p>
         <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
       </footer>
     </div>
-
-    
 
   </body>
 </html>
