@@ -1,6 +1,5 @@
 (function(){
-	var request,
-		events = [],
+	var filteredEvents = [],
 		calendarId = 'wikia-inc.com_4ch01et6e58vbfr2on5575alu8@group.calendar.google.com',
 
 		today = new Date(),
@@ -8,9 +7,15 @@
 		future = new Date(today.getTime() + days*24*60*60*1000),
 		resultsDiv = document.getElementById('results');
 
+	console.log('== resultsDiv ==');
+	console.log(resultsDiv);
+
+	console.log('== filteredEvents ==');
+	console.log(filteredEvents);
+
 	function getCalendarEvents() {
 		gapi.client.load('calendar', 'v3', function() {
-			request = gapi.client.calendar.events.list({
+			var request = gapi.client.calendar.events.list({
 				'calendarId': calendarId,
 				'timeMin': today.toISOString(),
 				'timeMax': future.toISOString()
@@ -31,39 +36,45 @@
 		console.log('== results ==');
 		console.log(results);
 
+		console.log('== filteredEvents ==');
+		console.log(filteredEvents);
+
 		results.forEach(function(event) {
 			var matches = event.summary.match('(.{1,}) in (.{1,})');
 
 			if( matches ) {
 				console.log('match!');
 
-				events.push({
+				filteredEvents.push({
 					who: matches[1],
 					where: matches[2],
 					summary: event.summary,
 					start: event.start.date,
 					end: event.end.date
 				});
+
+				console.log('== filteredEvents ==');
+				console.log(filteredEvents);
 			}
 		});
 
-		console.log('== events ==');
-		console.log(events);
+		console.log('== filteredEvents ==');
+		console.log(filteredEvents);
 
 		hideLoader();
 		displayResults();
 	}
 
 	function displayResults() {
-		console.log('== events ==');
-		console.log(events);
+		console.log('== filteredEvents ==');
+		console.log(filteredEvents);
 
-		if( events.length = 0 ) {
+		if( filteredEvents.length = 0 ) {
 			showError('It seems no one is traveling in next 30 days.');
 		} else {
 			var p = document.createElement('p');
 
-			events.forEach(function(event) {
+			filteredEvents.forEach(function(event) {
 				p.appendChild(document.createTextNode(event.who + ' is in ' + event.where + '(' + event.start + ' - ' + event.end + ')'));
 				resultsDiv.appendChild(p);
 			});
