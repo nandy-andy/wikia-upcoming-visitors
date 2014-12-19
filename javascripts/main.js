@@ -84,6 +84,7 @@
 	}
 
 	function onFilterClick(event) {
+		console.log('click');
 		console.log(event);
 	}
 
