@@ -84,19 +84,15 @@
 
 			events.forEach(function(event) {
 				if( !places[event.where] ) {
-					places.push(event.where);
+					places[event.where] = true;
 				}
 			});
 
-			console.log('== places ==');
-			console.log(places);
-
 			filters.push({
 				name: 'Places',
-				options: places
+				options: places.keys()
 			});
 
-			console.log('== filters ==');
 			console.log(filters);
 		}
 	}
