@@ -75,8 +75,8 @@
 					button.dataset.filterValue = option;
 
 					button.addEventListener('click', function(event) {
-						console.log('-= client =-');
-						console.log(event);
+						var targetData = event.target.dataset || {filter: 'none', value: null};
+						filterEvents(targetData.filter, targetData.filterValue);
 					});
 
 					button.appendChild(document.createTextNode(option));
@@ -100,6 +100,11 @@
 		}
 	}
 
+	function filterEvents(filterType, filterValue) {
+		console.log(filterType, filterValue);
+		//clearResultsDiv();
+	}
+
 	function prepareFilteringOptions() {
 		if( events.length > 0 ) {
 			var places = [];
@@ -119,6 +124,10 @@
 
 	function hideLoader() {
 		resultsDiv.classList.remove('loading');
+	}
+
+	function clearResultsDiv() {
+		while(resultsDiv.firstChild) resultsDiv.removeChild(resultsDiv.firstChild);
 	}
 
 	function showError(errorMsg) {
