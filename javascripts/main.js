@@ -75,4 +75,6 @@ document.addEventListener("DOMContentLoaded", function() {
 		errorDiv.appendChild(document.createTextNode(errorMsg));
 		errorDiv.style.display = 'block';
 	}
+
+	auth();
 });
