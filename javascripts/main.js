@@ -12,7 +12,8 @@
 			var request = gapi.client.calendar.events.list({
 				'calendarId': calendarId,
 				'timeMin': today.toISOString(),
-				'timeMax': future.toISOString()
+				'timeMax': future.toISOString(),
+				'orderBy': startTime
 			});
 
 			request.execute(function(resp) {
