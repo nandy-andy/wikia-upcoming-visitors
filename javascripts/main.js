@@ -73,7 +73,7 @@
 		if( filters.length > 0 ) {
 			filters.push({
 				name: 'reset',
-				options: {0: 'All'}
+				options: ['All']
 			});
 
 			filters.forEach(function(filter) {
