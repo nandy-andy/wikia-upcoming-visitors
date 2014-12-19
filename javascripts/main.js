@@ -47,6 +47,7 @@
 		prepareFilteringOptions();
 
 		hideLoader();
+		displayFilteringOptions();
 		displayResults();
 	}
 
@@ -60,6 +61,22 @@
 
 				p.appendChild(document.createTextNode(text));
 				resultsDiv.appendChild(p);
+			});
+		}
+	}
+
+	function displayFilteringOptions() {
+		if( filters.length > 0 ) {
+			filters.forEach(function(filter) {
+				filter.options.forEach(function(option) {
+					var button = document.createElement('button');
+
+					button.dataset['filter'] = filter.name;
+					button.dataset['filter-value'] = option;
+
+					button.appendChild(document.createTextNode(option));
+					resultsDiv.appendChild(button);
+				});
 			});
 		}
 	}
@@ -92,8 +109,6 @@
 				name: 'Places',
 				options: Object.keys(places)
 			});
-
-			console.log(filters);
 		}
 	}
 
