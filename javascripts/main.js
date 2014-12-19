@@ -32,14 +32,18 @@
 			var matches = event.summary.match('(.{1,}) in (.{1,})');
 
 			if( matches ) {
-				events.push({
+				var newEvent = {
 					who: matches[1],
 					where: matches[2],
 					notes: matches[3] || '',
 					summary: event.summary,
 					start: event.start.date,
-					end: event.end.date
-				});
+					end: event.end.date,
+					diff: today.diff(moment(event.start.date))
+				};
+
+				console.log(newEvent);
+				events.push(newEvent);
 			}
 		});
 
