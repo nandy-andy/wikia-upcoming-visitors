@@ -369,16 +369,15 @@ Full-Width Styles
 }
 
 .loader {
-	visibility: hidden;
+	display: none;
 }
 
 .loading .loader {
-	visibility: visible;
+	display: block;
 }
 
 .loader {
 	width: 128px;
-	display: block;
 	margin: 0 auto;
 	text-align: center;
 }
