@@ -29,7 +29,7 @@
 
 	function handleResponseItems(results) {
 		results.forEach(function(event) {
-			var matches = event.summary.match('(.{1,}) in (.{1,}) (.{1,})');
+			var matches = event.summary.match('(.{1,}) in (.{1,})');
 
 			if( matches ) {
 				events.push({
@@ -43,15 +43,8 @@
 			}
 		});
 
-		console.log(events);
-
 		sortEvents();
-
-		console.log(events);
-
 		prepareFilteringOptions();
-
-		console.log(events);
 
 		hideLoader();
 		displayResults();
