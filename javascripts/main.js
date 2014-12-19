@@ -38,11 +38,9 @@
 					notes: matches[3] || '',
 					summary: event.summary,
 					start: event.start.date,
-					end: event.end.date,
-					diff: today.diff(moment(event.start.date), 'days')
+					end: event.end.date
 				};
 
-				console.log(newEvent);
 				events.push(newEvent);
 			}
 		});
@@ -65,11 +63,41 @@
 		} else {
 			eventsList.forEach(function(event) {
 				var p = document.createElement('p'),
-					text = event.who + ' is in ' + event.where + ' (' + event.start + ' - ' + event.end + ')';
+					text = prepareText(
+						event.who,
+						event.where,
+						event.start,
+						event.end,
+						event.diff
+					);
 
 				p.appendChild(document.createTextNode(text));
 				resultsDiv.appendChild(p);
 			});
+		}
+	}
+
+	function prepareText(who, where, start, end, diff) {
+		var momentStart = moment(start),
+			diffHours = today.diff(momentStart, 'hours'),
+			diffDays = today.diff(momentStart, 'days');
+
+		if( diffHours < 0 ) {
+			return event.who +
+				' will be in ' +
+				event.where +
+				' in ' +
+				diffDays +
+				' for ' +
+				momentStart.diff(moment(end, 'days')) +
+				' days';
+		} else {
+			return event.who +
+			' is in ' +
+			event.where +
+			' for ' +
+			today.diff(moment(end, 'days')) +
+			' days';
 		}
 	}
 
