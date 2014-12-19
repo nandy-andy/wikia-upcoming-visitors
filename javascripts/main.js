@@ -51,8 +51,13 @@
 			showError('It seems no one is traveling in next 30 days.');
 		} else {
 			filteredEvents.forEach(function(event) {
-				var p = document.createElement('p');
-				p.appendChild(document.createTextNode(event.who + ' is in ' + event.where + '(' + event.start + ' - ' + event.end + ')'));
+				var p = document.createElement('p'),
+					text = event.who + ' is in ' + event.where + '(' + event.start + ' - ' + event.end + ')';
+
+				console.log(text);
+				console.log(resultsDiv);
+
+				p.appendChild(document.createTextNode(text));
 				resultsDiv.appendChild(p);
 			});
 		}
