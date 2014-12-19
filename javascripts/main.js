@@ -80,7 +80,7 @@
 
 	function prepareFilteringOptions() {
 		if( events.length > 0 ) {
-			var places;
+			var places = [];
 
 			events.forEach(function(event) {
 				if( !places[event.where] ) {
