@@ -14,7 +14,7 @@
 				'calendarId': calendarId,
 				'timeMin': today.toISOString(),
 				'timeMax': future.toISOString(),
-				'orderBy': startTime
+				'orderBy': 'startTime'
 			});
 
 			request.execute(function(resp) {
