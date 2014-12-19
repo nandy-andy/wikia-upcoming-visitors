@@ -90,7 +90,7 @@
 
 			filters.push({
 				name: 'Places',
-				options: places.keys()
+				options: Object.keys(places)
 			});
 
 			console.log(filters);
