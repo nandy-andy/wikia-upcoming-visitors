@@ -1,27 +1,11 @@
 var request,
-	events,
-	clientId = '671827949894-b6eoa7u39g5cpecn0n42h2vqgh8sv0au.apps.googleusercontent.com',
+	events = [],
 	calendarId = 'wikia-inc.com_4ch01et6e58vbfr2on5575alu8@group.calendar.google.com',
 
 	today = new Date(),
 	days = 30,
 	future = new Date(today.getTime() + days*24*60*60*1000),
 	resultsDiv = document.getElementById('results');
-
-console.log(resultsDiv);
-
-function auth() {
-	var config = {
-		'client_id': clientId,
-		'scope': 'https://www.googleapis.com/auth/calendar.readonly'
-	};
-
-	gapi.auth.authorize(config, function(authResult) {
-		if (authResult && !authResult.error) {
-			getCalendarEvents();
-		}
-	});
-}
 
 function getCalendarEvents() {
 	gapi.client.load('calendar', 'v3', function() {
@@ -78,4 +62,8 @@ function showError(errorMsg) {
 
 	errorDiv.appendChild(document.createTextNode(errorMsg));
 	errorDiv.style.display = 'block';
+}
+
+if( window.STATE.authorized.success === true ) {
+	getCalendarEvents();
 }
