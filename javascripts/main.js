@@ -18,7 +18,7 @@
 
 			request.execute(function(resp) {
 				if( resp.items ) {
-					filterResults(resp.items);
+					handleResponseItems(resp.items);
 				} else {
 					hideLoader();
 					showError('No results from API.');
@@ -27,10 +27,9 @@
 		});
 	}
 
-	function filterResults(results) {
+	function handleResponseItems(results) {
 		results.forEach(function(event) {
-			var matches = event.summary.match('(.{1,}) in (.{1,}) (.{1,})'),
-				newEventObj;
+			var matches = event.summary.match('(.{1,}) in (.{1,}) (.{1,})');
 
 			if( matches ) {
 				events.push({
