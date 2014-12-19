@@ -43,8 +43,15 @@
 			}
 		});
 
+		console.log(events);
+
 		sortEvents();
+
+		console.log(events);
+
 		prepareFilteringOptions();
+
+		console.log(events);
 
 		hideLoader();
 		displayResults();
