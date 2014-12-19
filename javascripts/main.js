@@ -79,29 +79,28 @@
 	function prepareText(who, where, start, end) {
 		var momentStart = moment(start),
 			diffHours = today.diff(momentStart, 'hours'),
-			diffDays = today.diff(momentStart, 'days');
-
-		console.log('-----');
-		console.log(start);
-		console.log(end);
+			diffDays = today.diff(momentStart, 'days'),
+			text = '';
 
 		if( diffHours < 0 ) {
-			return who +
+			text = who +
 				' will be in ' +
 				where +
 				' in ' +
-				diffDays +
+				Math.abs(diffDays) +
 				' days for ' +
-				momentStart.diff(moment(end), 'days') +
+				Math.abs(momentStart.diff(moment(end), 'days')) +
 				' days';
 		} else {
-			return who +
+			text = who +
 			' is in ' +
 			where +
 			' for ' +
-			today.diff(moment(end), 'days') +
+			Math.abs(today.diff(moment(end), 'days')) +
 			' days';
 		}
+
+		return text + ' (' + start + ' - ' + end + ')';
 	}
 
 	function displayFilteringOptions() {
