@@ -41,9 +41,6 @@
 					end: event.end.date
 				};
 
-				console.log(event.start.date);
-				console.log(event.end.date);
-
 				events.push(newEvent);
 			}
 		});
@@ -89,11 +86,15 @@
 			text = who +
 				' will be in ' +
 				where +
-				' in ' +
-				Math.abs(diffDays) +
-				' days for ' +
-				Math.abs(momentStart.diff(moment(end), 'days')) +
-				' days';
+				' in ';
+
+			if( diffHours <= 24 ) {
+				text += Math.abs(diffHours) + ' hours for ';
+			} else {
+				text += Math.abs(diffDays) + ' days for ';
+			}
+
+			text += Math.abs(momentStart.diff(moment(end), 'days')) + ' days';
 		} else {
 			text = who +
 			' is in ' +
