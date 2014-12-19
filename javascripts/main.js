@@ -29,13 +29,14 @@
 
 	function filterResults(results) {
 		results.forEach(function(event) {
-			var matches = event.summary.match('(.{1,}) in (.{1,})'),
+			var matches = event.summary.match('(.{1,}) in (.{1,}) (.{1,})'),
 				newEventObj;
 
 			if( matches ) {
 				events.push({
 					who: matches[1],
 					where: matches[2],
+					notes: matches[3] || '',
 					summary: event.summary,
 					start: event.start.date,
 					end: event.end.date
