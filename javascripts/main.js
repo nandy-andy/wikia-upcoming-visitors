@@ -71,8 +71,8 @@
 				filter.options.forEach(function(option) {
 					var button = document.createElement('button');
 
-					button.dataset['filter'] = filter.name;
-					button.dataset['filter-value'] = option;
+					button.dataset.filter = filter.name;
+					button.dataset.filterValue = option;
 
 					button.appendChild(document.createTextNode(option));
 					resultsDiv.appendChild(button);
