@@ -81,6 +81,10 @@
 			diffHours = today.diff(momentStart, 'hours'),
 			diffDays = today.diff(momentStart, 'days');
 
+		console.log('-----');
+		console.log(start);
+		console.log(end);
+
 		if( diffHours < 0 ) {
 			return who +
 				' will be in ' +
