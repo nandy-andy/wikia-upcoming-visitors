@@ -88,13 +88,17 @@
 				}
 			});
 
+			console.log('== places ==');
+			console.log(places);
+
 			filters.push({
-				name: 'Place',
+				name: 'Places',
 				options: places
 			});
-		}
 
-		console.log(filters);
+			console.log('== filters ==');
+			console.log(filters);
+		}
 	}
 
 	function hideLoader() {
