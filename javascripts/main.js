@@ -28,10 +28,15 @@
 	}
 
 	function filterResults(results) {
+		console.log('== results ==');
+		console.log(results);
+
 		results.forEach(function(event) {
 			var matches = event.summary.match('(.{1,}) in (.{1,})');
 
 			if( matches ) {
+				console.log('match!');
+
 				events.push({
 					who: matches[1],
 					where: matches[2],
@@ -42,24 +47,27 @@
 			}
 		});
 
-		if( events.length = 0 ) {
-			showError('It seems no one is traveling in next 30 days.');
-		} else {
-			displayResults();
-		}
+		console.log('== events ==');
+		console.log(events);
 
 		hideLoader();
+		displayResults();
 	}
 
 	function displayResults() {
+		console.log('== events ==');
 		console.log(events);
 
-		var p = document.createElement('p');
+		if( events.length = 0 ) {
+			showError('It seems no one is traveling in next 30 days.');
+		} else {
+			var p = document.createElement('p');
 
-		events.forEach(function(event) {
-			p.appendChild(document.createTextNode(event.who + ' is in ' + event.where + '(' + event.start + ' - ' + event.end + ')'));
-			resultsDiv.appendChild(p);
-		});
+			events.forEach(function(event) {
+				p.appendChild(document.createTextNode(event.who + ' is in ' + event.where + '(' + event.start + ' - ' + event.end + ')'));
+				resultsDiv.appendChild(p);
+			});
+		}
 	}
 
 	function hideLoader() {
