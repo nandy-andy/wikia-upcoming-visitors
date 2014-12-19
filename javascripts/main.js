@@ -106,7 +106,7 @@
 
 	function filterEvents(filterType, filterValue) {
 		var newEvents = events.filter(function (event) {
-			return event[filterType] = filterValue;
+			return event[filterType] === filterValue;
 		});
 
 		displayResults(newEvents);
