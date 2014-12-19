@@ -71,6 +71,11 @@
 
 	function displayFilteringOptions() {
 		if( filters.length > 0 ) {
+			filters.push({
+				name: 'reset',
+				options: {0: 'All'}
+			});
+
 			filters.forEach(function(filter) {
 				filter.options.forEach(function(option) {
 					var button = document.createElement('button');
@@ -105,11 +110,15 @@
 	}
 
 	function filterEvents(filterType, filterValue) {
-		var newEvents = events.filter(function (event) {
-			return event[filterType] === filterValue;
-		});
+		if( filterType === 'reset' ) {
+			displayResults(events);
+		} else {
+			var newEvents = events.filter(function (event) {
+				return event[filterType] === filterValue;
+			});
 
-		displayResults(newEvents);
+			displayResults(newEvents);
+		}
 	}
 
 	function prepareFilteringOptions() {
