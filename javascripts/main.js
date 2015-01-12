@@ -33,12 +33,7 @@
 			var matches = event.summary.split(' in ');
 
 			if( matches ) {
-				console.log(event.summary);
-				console.log(matches);
-
 				if( matches.length > 1 ) {
-					console.log(matches[1].split('(')[0]);
-
 					var newEvent = {
 	                                        who: matches[0],
         	                                where: matches[1].split('(')[0],
