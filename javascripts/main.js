@@ -4,7 +4,8 @@
 		calendarId = 'wikia-inc.com_4ch01et6e58vbfr2on5575alu8@group.calendar.google.com',
 
 		today = moment(),
-		future = moment().add(120, 'days'),
+		dateRange = 120,
+		future = moment().add(dateRange, 'days'),
 		filtersDiv = document.getElementById('filters'),
 		resultsDiv = document.getElementById('results');
 
@@ -59,7 +60,7 @@
 		var eventsList = inputEvents || events;
 
 		if( eventsList.length === 0 ) {
-			showError('It seems no one is traveling in next 30 days.');
+			showError('It seems no one is traveling in next ' + dateRange + ' days.');
 		} else {
 			eventsList.forEach(function(event) {
 				var p = document.createElement('p'),
