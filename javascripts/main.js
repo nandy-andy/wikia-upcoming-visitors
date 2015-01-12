@@ -34,6 +34,9 @@
 			var matches = event.summary.match(summaryPattern);
 
 			if( matches ) {
+				console.log(event.summary);
+				console.log(matches);				
+
 				var newEvent = {
 					who: matches[1],
 					where: matches[2],
