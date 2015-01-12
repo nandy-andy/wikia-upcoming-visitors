@@ -4,7 +4,7 @@
 		calendarId = 'wikia-inc.com_4ch01et6e58vbfr2on5575alu8@group.calendar.google.com',
 
 		today = moment(),
-		future = moment().add(30, 'days'),
+		future = moment().add(120, 'days'),
 		filtersDiv = document.getElementById('filters'),
 		resultsDiv = document.getElementById('results');
 
