@@ -52,6 +52,7 @@
 		hideLoader();
 		displayFilteringOptions();
 		displayResults();
+		displayDateRangeText();
 	}
 
 	function displayResults(inputEvents) {
@@ -132,6 +133,14 @@
 				});
 			});
 		}
+	}
+
+	function displayDateRangeText() {
+		document
+			.getElementById('date_range_text')
+			.appendChild(
+				document.createTextNode(' between now and ' + future.format('dddd, MMMM Do YYYY'))
+			);
 	}
 
 	function sortEvents() {
