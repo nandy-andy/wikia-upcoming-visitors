@@ -7,8 +7,7 @@
 		dateRange = 120,
 		future = moment().add(dateRange, 'days'),
 		filtersDiv = document.getElementById('filters'),
-		resultsDiv = document.getElementById('results'),
-		summaryPattern = '(.{1,}) in (.{1,})';
+		resultsDiv = document.getElementById('results');
 
 	function getCalendarEvents() {
 		gapi.client.load('calendar', 'v3', function() {
@@ -31,16 +30,17 @@
 
 	function handleResponseItems(results) {
 		results.forEach(function(event) {
-			var matches = event.summary.match(summaryPattern);
+			var matches = event.summary.split(' in ');
 
 			if( matches ) {
 				console.log(event.summary);
-				console.log(matches);				
+				console.log(matches);
+				console.log(matches[1].split('(')[0];				
 
 				var newEvent = {
-					who: matches[1],
-					where: matches[2],
-					notes: matches[3] || '',
+					who: matches[0],
+					where: matches[1].split('(')[0],
+					notes: '',
 					summary: event.summary,
 					start: event.start.date,
 					end: event.end.date
