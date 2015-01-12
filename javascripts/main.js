@@ -35,7 +35,7 @@
 			if( matches ) {
 				console.log(event.summary);
 				console.log(matches);
-				console.log(matches[1].split('(')[0];				
+				console.log(matches[1].split('(')[0]);				
 
 				var newEvent = {
 					who: matches[0],
