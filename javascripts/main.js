@@ -35,18 +35,21 @@
 			if( matches ) {
 				console.log(event.summary);
 				console.log(matches);
-				console.log(matches[1].split('(')[0]);				
 
-				var newEvent = {
-					who: matches[0],
-					where: matches[1].split('(')[0],
-					notes: '',
-					summary: event.summary,
-					start: event.start.date,
-					end: event.end.date
-				};
+				if( matches.length > 1 ) {
+					console.log(matches[1].split('(')[0]);
 
-				events.push(newEvent);
+					var newEvent = {
+	                                        who: matches[0],
+        	                                where: matches[1].split('(')[0],
+                	                        notes: '',
+                        	                summary: event.summary,
+                                	        start: event.start.date,
+                                        	end: event.end.date
+	                                };
+	
+        	                        events.push(newEvent);
+				}
 			}
 		});
 
